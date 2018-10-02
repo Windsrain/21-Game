@@ -58,7 +58,6 @@ moregame:	printf("********   新的一盘游戏开始了   ********\n");
 			}
 			if (fla==0) {
 				printf("玩家A放弃本轮摸牌\n");
-				fla=1;
 			}
 			printf("本轮玩家B是否摸牌：请输入1（摸）或0（不摸）\n"); 
 			scanf("%d",&flb);
@@ -74,10 +73,11 @@ moregame:	printf("********   新的一盘游戏开始了   ********\n");
 			}
 			if (flb==0) {
 				printf("玩家B放弃本轮摸牌\n");
-				flb=1;
 			}
+			if (fla==0 && flb==0) goto final;
 		}
 		while (0) {
+			printf("本轮游戏结束\n");
 			final:if (scorea>21) {
 				printf("player B win!!!player B got %d scores\n",scoreb);
 				plb+=scoreb;
@@ -85,6 +85,17 @@ moregame:	printf("********   新的一盘游戏开始了   ********\n");
 			if (scoreb>21) {
 				printf("player A win!!!player A got %d socres\n",scorea);
 				pla+=scorea;
+			}
+			if (scorea<=21 && scoreb<=21) {
+				if (scorea>scoreb) {
+					printf("player A win!!!player A got %d scores\n",scorea);
+				}
+				if (scoreb>scorea) {
+					printf("player B win!!!player B got &d socres\n",scoreb);
+				} 
+				if (scorea==scoreb) {
+					printf("duel!!!");
+				} 
 			}
 			printf("是否开启新一轮游戏？请输入1/0:");
 			int newgame=1;
@@ -100,7 +111,7 @@ moregame:	printf("********   新的一盘游戏开始了   ********\n");
 	exit:printf("游戏最终结束！玩家A和玩家B分别获得%d:%d的分数\n",pla,plb);
 	if (pla>plb) printf("player A win!!!\n");
 	if (pla<plb) printf("player B win!!!\n");
-	if (pla==plb) printf("no one win!!!\n");
+	if (pla==plb) printf("duel!!!\n");
 																
 	return 0; 
 }
