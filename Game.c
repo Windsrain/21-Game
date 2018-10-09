@@ -108,7 +108,7 @@ moregame:	printf("********   新的一盘游戏开始了   ********\n\n");
 			if (newgame==1) goto moregame;
 		} 
 	}
-	exit:printf("游戏最终结束，玩家A和B分别获得%d和%d的分数\n",pla,plb);
+	exit:printf("游戏最终结束，玩家A和B分别获得%d和%d的分数\n\n",pla,plb);
 	if (pla>plb) printf("player A win!!!\n");
 	if (pla<plb) printf("player B win!!!\n");
 	if (pla==plb) printf("duel!!!\n");
